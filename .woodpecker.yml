@@ -9,7 +9,7 @@ steps:
       password:
         from_secret: wetterland_docker_password
       registry: https://registry.wetter.land/v1
-      repo: xhelliom/helloworld
+      repo: registry.wetter.land/xhelliom/helloworld
       tag: 1.0
       dockerfile: ./Dockerfile
     backend_options:
