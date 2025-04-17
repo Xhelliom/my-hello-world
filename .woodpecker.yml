@@ -1,0 +1,23 @@
+steps:
+  build:
+    image: docker:latest
+    commands:
+      - docker build -t xhelliom/helloworld:1.0 .
+
+  publish_multiarch:
+    image: woodpeckerci/plugin-docker-buildx
+    privileged: true
+    settings:
+      platforms: linux/arm64/v8,linux/amd64
+      username:
+        from_secret: wetterland_docker_username
+      password:
+        from_secret: wetterland_docker_password
+      registry: https://registry.wetter.land/v1
+      repo: xhelliom/helloworld
+      tag: 1.0
+      dockerfile: ./Dockerfile
+    backend_options:
+      kubernetes:
+        securityContext:
+          privileged: true
