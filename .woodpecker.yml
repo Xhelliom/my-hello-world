@@ -1,9 +1,4 @@
 steps:
-  build:
-    image: docker:latest
-    commands:
-      - docker build -t xhelliom/helloworld:1.0 .
-
   publish_multiarch:
     image: woodpeckerci/plugin-docker-buildx
     privileged: true
